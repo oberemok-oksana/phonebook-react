@@ -5,18 +5,72 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
-ul {
+
+.App {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.block-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  flex-basis: 15%;
+  gap: 5px;
+}
+
+.contacts-list {
   list-style-type: none;
-  width: 300px;
+  /* width: 300px; */
+  /* border: 1px solid #185; */
+  padding-left: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.contact-item {
+  border: 1px solid #116530;
+  border-radius: 4px;
+  padding: 20px;
+  background-color: #116530;
+  color: #fff;
+  margin-bottom: 5px;
+  height: fit-content;
 }
 
 .active {
-  background-color: #187;
+  background-color: #ffcc1d;
 }
 
 .add-form {
   display: flex;
-  width: 300px;
   flex-direction: column;
+}
+
+.form-item {
+  padding: 5px 8px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+  min-width: 200px;
+  margin-top: 17px;
+}
+
+.submit-btn {
+  padding: 8px 10px;
+  background-color: #116530;
+  width: 125px;
+  margin: 0 auto;
+  border-radius: 5px;
+  color: #fff;
+  margin-top: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.submit-btn:active {
+  transform: scale(1.1);
 }
