@@ -5,6 +5,7 @@ import ActiveContact from "./components/ActiveContact";
 import AddContactForm from "./components/AddContactForm";
 import api from "./components/Api";
 import Spinner from "./components/Spinner";
+import Filters from "./components/Filters";
 
 class App extends Component {
   state = {
@@ -34,6 +35,12 @@ class App extends Component {
     });
   }
 
+  filterContacts = (obj) => {
+    api.searchContacts(obj).then((response) => {
+      this.setState({ contacts: response.contacts });
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -47,6 +54,7 @@ class App extends Component {
           />
         )}
         <ActiveContact activeContact={this.state.activeContact} />
+        <Filters onFilter={this.filterContacts} />
         <AddContactForm onSubmitAddContactForm={this.addNewContact} />
       </div>
     );

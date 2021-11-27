@@ -49,6 +49,18 @@ class Api {
       }),
     }).then((response) => response.json());
   };
+
+  searchContacts = (obj) => {
+    return fetch("https://mag-contacts-api.herokuapp.com/contacts/find", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.token,
+      },
+      body: JSON.stringify(obj),
+    }).then((response) => response.json());
+  };
 }
 
 const api = new Api();
