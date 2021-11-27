@@ -17,9 +17,17 @@ class Filters extends Component {
     this.props.onFilter(obj);
   };
 
+  resetContacts = () => {
+    this.props.onReset();
+  };
+
   render() {
     return (
-      <form className="block-item" onSubmit={this.searchContacts}>
+      <form
+        className="block-item"
+        onSubmit={this.searchContacts}
+        onReset={this.resetContacts}
+      >
         <select className="form-item" name="type">
           <option value="name">Name</option>
           <option value="value">Value</option>
@@ -33,7 +41,9 @@ class Filters extends Component {
         <button type="submit" className="submit-btn">
           Search
         </button>
-        {/* <button className="submit-btn">Reset</button> */}
+        <button type="reset" className="submit-btn">
+          Reset
+        </button>
       </form>
     );
   }

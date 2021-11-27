@@ -41,6 +41,12 @@ class App extends Component {
     });
   };
 
+  resetContacts = () => {
+    api.getAllContacts().then((response) => {
+      this.setState({ contacts: response.contacts, activeContact: null });
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -54,7 +60,7 @@ class App extends Component {
           />
         )}
         <ActiveContact activeContact={this.state.activeContact} />
-        <Filters onFilter={this.filterContacts} />
+        <Filters onFilter={this.filterContacts} onReset={this.resetContacts} />
         <AddContactForm onSubmitAddContactForm={this.addNewContact} />
       </div>
     );
