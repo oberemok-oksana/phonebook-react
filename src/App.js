@@ -19,10 +19,13 @@ class App extends Component {
     });
   };
 
-  addNewContact = (contact) => {
-    this.setState(({ contacts }) => {
-      return { contacts: contacts.concat(contact) };
-    });
+  addNewContact = (name, type, value) => {
+    api
+      .addNewContact(name, type, value)
+      .then(() => api.getAllContacts())
+      .then((response) => {
+        this.setState(() => ({ contacts: response.contacts }));
+      });
   };
 
   componentDidMount() {

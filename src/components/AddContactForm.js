@@ -1,18 +1,6 @@
 import { Component } from "react";
 
 class AddContactForm extends Component {
-  state = {
-    id: 5,
-  };
-
-  updateId = () => {
-    this.setState(({ id }) => {
-      console.log(id);
-      console.log(this.state.id);
-      return { id: id + 1 };
-    });
-  };
-
   createNewContact = (e) => {
     e.preventDefault();
     let inputName = e.target.elements["name"].value;
@@ -24,10 +12,12 @@ class AddContactForm extends Component {
         name: inputName,
         type: inputType,
         value: inputValue,
-        id: this.state.id,
       };
-      this.updateId();
-      this.props.onSubmitAddContactForm(contact);
+      this.props.onSubmitAddContactForm(
+        contact.name,
+        contact.type,
+        contact.value
+      );
     } else {
       alert("Please fill in all the fields.");
     }

@@ -1,6 +1,6 @@
 class Api {
   token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPa3NhbmEiLCJpYXQiOjE2MzgwMTU5OTksImV4cCI6MTYzODAxOTU5OX0.p6s-UwkPKRkPSI7D3VIN35XFFCjcJFxsBbK-Bs1nNsI";
+    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPa3NhbmEiLCJpYXQiOjE2MzgwMTk2NzMsImV4cCI6MTYzODAyMzI3M30.vzfDTE2V4j4Fkb_YBfGtmjH4duaTqFTO3bkeG51k08I";
 
   login = (login, password) => {
     return fetch("https://mag-contacts-api.herokuapp.com/login", {
@@ -31,6 +31,22 @@ class Api {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+    }).then((response) => response.json());
+  };
+
+  addNewContact = (name, type, value) => {
+    return fetch("https://mag-contacts-api.herokuapp.com/contacts/add", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + this.token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        type: type,
+        value: value,
+      }),
     }).then((response) => response.json());
   };
 }
